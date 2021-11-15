@@ -1,0 +1,42 @@
+{% set name = "a2z-regulatory" %}
+{% set version = "0.1" %}
+#{% set sha256 = "" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  #url: https://bitbucket.org/bucklerlab/{{ name }}/get/v{{ version }}.tar.gz
+  #sha256: {{ sha256 }}
+  path: ../../..
+
+build:
+  noarch: python
+  skip: True  # [not linux]
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - python >=3.9
+    - pip
+  run:
+    - python >=3.9
+    - tensorflow-gpu =2.6
+    - biopython
+    - scikit-learn =1
+    - matplotlib >=3.4
+    - pandas >=1
+    - numpy >=1.19
+
+test:
+  imports:
+    - a2z
+
+about:
+  home: https://bitbucket.org/bucklerlab/{{ name }}
+  license: MIT
+  summary: 'Cross-species regulatory modeling'
+  dev_url: https://bitbucket.org/bucklerlab/{{ name }}
+

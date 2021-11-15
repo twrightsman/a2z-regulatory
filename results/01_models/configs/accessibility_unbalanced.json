@@ -1,0 +1,24 @@
+{
+  "paths": {
+    "intervals": "../../data/lu_2019_ATACseq/peaks",
+    "genomes": "../../data/lu_2019_ATACseq/genomes",
+    "annotations": "../../data/lu_2019_ATACseq/annotations"
+  },
+  "preprocessing": {
+    "window_size": 600,
+    "proximal_cutoff": 2000
+  },
+  "splitting": {
+    "test_frac": 0.03,
+    "balancing": []
+  },
+  "training": {
+    "clade": "Angiosperm",
+    "strategy": "drop-one",
+    "samples": 3,
+    "architecture": "DanQ",
+    "epochs": 10,
+    "hyperparameters": {},
+    "negative_upweighting": false
+  }
+}

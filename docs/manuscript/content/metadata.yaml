@@ -1,0 +1,89 @@
+---
+title: "Modeling chromatin state from sequence across angiosperms using recurrent convolutional neural networks"
+keywords:
+  - machine learning
+  - chromatin
+  - epigenetics
+  - angiosperms
+  - plants
+lang: en-US
+authors:
+  - name: Travis Wrightsman
+    github: twrightsman
+    initials: TW
+    orcid: 0000-0002-0904-6473
+    email: tw493@cornell.edu
+    affiliations:
+      - Section of Plant Breeding and Genetics, Cornell University, Ithaca, NY, USA 14853
+    funders:
+      - NSF Graduate Research Fellowship (DGE-1650441)
+      - USDA-ARS
+    credit_roles:
+      - Conceptualization
+      - Data curation
+      - Formal Analysis
+      - Funding acquisition
+      - Investigation
+      - Methodology
+      - Project administration
+      - Resources
+      - Software
+      - Validation
+      - Visualization
+      - Writing - original draft
+      - Writing - review & editing
+  - name: Alexandre P. Marand
+    initials: APM
+    orcid: 0000-0001-9100-8320
+    email: marand@uga.edu
+    affiliations:
+      - Department of Genetics, University of Georgia, Athens, GA, USA 30602
+    funders:
+      - NSF Postdoctoral Fellowship in Biology (DBI-1905869)
+    credit_roles:
+      - Formal Analysis
+      - Methodology
+      - Resources
+      - Supervision
+      - Writing - review & editing
+  - name: Peter A. Crisp
+    initials: PAC
+    orcid: 0000-0002-3655-0130
+    email: p.crisp@uq.edu.au
+    affiliations:
+      - School of Agriculture and Food Sciences, University of Queensland, Brisbane, QLD 4072, Australia
+    funders:
+      - Australian Research Council (ARC) Discovery Early Career Award (DE200101748)
+    credit_roles:
+      - Resources
+      - Formal Analysis
+      - Writing - review & editing
+  - name: Nathan M. Springer
+    initials: NMS
+    orcid: 0000-0002-7301-4759
+    email: springer@umn.edu
+    affiliations:
+      - Department of Plant and Microbial Biology, University of Minnesota, Saint Paul, MN, USA 55108
+    funders:
+      - NSF IOS-1934384
+    credit_roles:
+      - Methodology
+      - Resources
+      - Writing - review & editing
+  - name: Edward S. Buckler
+    initials: ESB
+    orcid: 0000-0002-3100-371X
+    email: esb33@cornell.edu
+    affiliations:
+      - Section of Plant Breeding and Genetics, Cornell University, Ithaca, NY, USA 14853
+      - Institute for Genomic Diversity, Cornell University, Ithaca, NY, USA 14853
+      - Agricultural Research Service, United States Department of Agriculture, Ithaca, NY, USA 14853
+    funders:
+      - USDA-ARS
+    credit_roles:
+      - Conceptualization
+      - Funding acquisition
+      - Methodology
+      - Supervision
+      - Writing - review & editing
+

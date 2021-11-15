@@ -1,0 +1,27 @@
+{
+  "paths": {
+    "intervals": "../../data/crisp_2021_umr_angiosperms/intervals",
+    "genomes": "../../data/crisp_2021_umr_angiosperms/genomes",
+    "annotations": "../../data/crisp_2021_umr_angiosperms/annotations"
+  },
+  "preprocessing": {
+    "window_size": 600,
+    "proximal_cutoff": 2000
+  },
+  "splitting": {
+    "test_frac": 0.03,
+    "balancing": [
+      "species",
+      "target"
+    ]
+  },
+  "training": {
+    "clade": "Angiosperm",
+    "strategy": "drop-one",
+    "samples": 3,
+    "architecture": "DanQ",
+    "epochs": 10,
+    "hyperparameters": {},
+    "negative_upweighting": false
+  }
+}

@@ -1,0 +1,99 @@
+[
+{
+  "id": "scikit-learn",
+  "type": "article-journal",
+  "title": "Scikit-learn: Machine Learning in Python",
+  "container-title": "Journal of Machine Learning Research",
+  "URL": "https://jmlr.csail.mit.edu/papers/v12/pedregosa11a.html",
+  "author": [
+    {
+      "given": "Fabian",
+      "family": "Pedregosa"
+    },
+    {
+      "given": "Gaël",
+      "family": "Varoquaux"
+    },
+    {
+      "given": "Alexandre",
+      "family": "Gramfort"
+    },
+    {
+      "given": "Vincent",
+      "family": "Michel"
+    },
+    {
+      "given": "Bertrand",
+      "family": "Thirion"
+    },
+    {
+      "given": "Olivier",
+      "family": "Grisel"
+    },
+    {
+      "given": "Mathieu",
+      "family": "Blondel"
+    },
+    {
+      "given": "Peter",
+      "family": "Prettenhofer"
+    },
+    {
+      "given": "Ron",
+      "family": "Weiss"
+    },
+    {
+      "given": "Vincent",
+      "family": "Dubourg"
+    },
+    {
+      "given": "Jake",
+      "family": "Vanderplas"
+    },
+    {
+      "given": "Alexandre",
+      "family": "Passos"
+    },
+    {
+      "given": "David",
+      "family": "Cournapeau"
+    },
+    {
+      "given": "Matthieu",
+      "family": "Brucher"
+    },
+    {
+      "given": "Matthieu",
+      "family": "Perrot"
+    },
+    {
+      "given": "Édouard",
+      "family": "Duchesnay"
+    }
+  ],
+  "page": "2825–2830",
+  "volume": "12",
+  "issued": {
+    "date-parts": [
+      [
+        2011
+      ]
+    ]
+  }
+},
+{
+  "id": "picard-tools",
+  "type": "webpage",
+  "title": "Picard toolkit",
+  "container-title": "GitHub",
+  "URL": "https://github.com/broadinstitute/picard",
+  "publisher": "Broad Institute",
+  "issued": {
+    "date-parts": [
+      [
+        2019
+      ]
+    ]
+  }
+}
+]

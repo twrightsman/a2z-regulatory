@@ -1,0 +1,2 @@
+results/*/*.ipynb filter=lfs diff=lfs merge=lfs -text
+results/*/figs/*.png filter=lfs diff=lfs merge=lfs -text
