@@ -1,0 +1,11 @@
+name: a2z-kipoi
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - python =3.9
+  - hdf5 =1.10.6
+  - pkgconfig
+  - pip
+  - pip:
+    - kipoi

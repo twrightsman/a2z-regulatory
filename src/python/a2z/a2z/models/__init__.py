@@ -92,6 +92,8 @@ def train_model(model: tf.keras.Model, training_data: tf.data.Dataset, validatio
         logging.info("Training done")
 
         model.save(model_dir)
+        # also save in HDF5 format
+        model.save(out_dir / 'model.h5')
 
         # save training history
         with open(out_dir / 'train_history.json', 'w') as history_out_file:
