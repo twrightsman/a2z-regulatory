@@ -42,6 +42,22 @@ Use `predict_genome.py -h` to see all available options.
 (a2z)$ src/python/scripts/predict_genome.py model-accessibility-full.h5 genome.fa > preds.bed
 ```
 
+Now you will have a BED3+1 file with predictions in 600bp windows sliding 50bp at a time.
+You can do simple "peak-calling" with `bedtools`.
+
+```
+(a2z)$ samtools faidx genome.fa
+(a2z)$ bedtools map -a <(bedtools makewindows -g genome.fa.fai -w 50) -b preds.bed -c 4 -o max | awk '$4 >= 0.9' | bedtools merge > preds.gte90.merged.bed
+```
+
+The above will take the max prediction of all overlapping windows every 50bp and then merge touching 50bp chunks with predictions greater than or equal to 0.90 into whole regions.
+You can also mask out repeats with bedtools and an annotation.
+
+```
+(a2z)$ grep -v '^#' repeats.gff3 | awk -v 'OFS=\t' '{print $1, $4 - 1, $5}' > repeats.bed
+(a2z)$ bedtools subtract -A -f 0.5 -a preds.gte90.merged.bed -b repeats.bed > preds.gte90.merged.masked.bed
+```
+
 ### Running predictions using Kipoi
 
 a2z has been packaged for the [Kipoi](https://kipoi.org) model zoo but is not yet integrated into it.
