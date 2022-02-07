@@ -75,12 +75,12 @@ function download_decmp() {
 
 ## Arabidopsis thaliana (TAIR10)
 jgi_download "Athaliana" "Athaliana_447_TAIR10.fa.gz" "genomes/Arabidopsis_thaliana.fa"
-if [ $downloaded ]; then
+if [ $downloaded -eq 1 ]; then
   # rename chromosomes to lowercase to match BED
   sed --in-place 's/^>Chr/>chr/' "genomes/Arabidopsis_thaliana.fa"
 fi
 jgi_download "Athaliana" "Athaliana_167_TAIR10.gene.gff3.gz" "annotations/Arabidopsis_thaliana.gff3"
-if [ $downloaded ]; then
+if [ $downloaded -eq 1 ]; then
   sed --in-place 's/^Chr/chr/' "annotations/Arabidopsis_thaliana.gff3"
 fi
 
@@ -94,11 +94,11 @@ jgi_download "Pvulgaris" "Pvulgaris_218_v1.0.gene.gff3.gz" "annotations/Phaseolu
 
 ## Glycine max (Soybean, Wm82.a2.v1)
 jgi_download "Gmax" "Gmax_275_v2.0.fa.gz" "genomes/Glycine_max.fa"
-if [ $downloaded ]; then
+if [ $downloaded -eq 1 ]; then
   sed --in-place --regexp-extended 's/^>Chr0?([0-9]+)/>chr\1/' "genomes/Glycine_max.fa"
 fi
 jgi_download "Gmax" "Gmax_275_Wm82.a2.v1.gene.gff3.gz" "annotations/Glycine_max.gff3"
-if [ $downloaded ]; then
+if [ $downloaded -eq 1 ]; then
   sed --in-place --regexp-extended 's/^Chr0?([0-9]+)/chr\1/' "annotations/Glycine_max.gff3"
 fi
 
@@ -135,7 +135,10 @@ download_decmp "http://asparagus.uga.edu/genome_files/AsparagusCHR_V1.1.fsa.gz" 
 download_decmp "http://asparagus.uga.edu/genome_files/AsparagusCHR_V1.1.Final.gff3.gz" "annotations/Asparagus_officinalis.gff3"
 
 for genome in genomes/*.fa; do
-  if [ ! -f "${genome}.fai"  ]; then
+  index="${genome}.fai"
+  if [ ! -f "$index" ] || [ "$genome" -nt "$index" ]; then
+    echo "Indexing $genome"
+    rm --force "$index"
     samtools faidx $genome
   fi
 done
