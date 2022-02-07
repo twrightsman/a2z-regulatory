@@ -169,11 +169,174 @@ def build_DanQ(window_size: int = 300, kernel: np.ndarray = None, conv_activatio
     return DanQ
 
 
+def build_Basset(window_size: int = 300) -> keras.Model:
+    Basset = keras.Sequential([
+        kl.Convolution1D(
+            filters = 300,
+            kernel_size = 19,
+            input_shape = (window_size, 4)
+        ),
+        kl.BatchNormalization(),
+        kl.Activation('relu'),
+        kl.MaxPooling1D(
+            pool_size = 3
+        ),
+        kl.Convolution1D(
+            filters = 200,
+            kernel_size = 11
+        ),
+        kl.BatchNormalization(),
+        kl.Activation('relu'),
+        kl.MaxPooling1D(
+            pool_size = 4
+        ),
+        kl.Convolution1D(
+            filters = 200,
+            kernel_size = 7
+        ),
+        kl.BatchNormalization(),
+        kl.Activation(
+            activation = 'relu'
+        ),
+        kl.MaxPooling1D(
+            pool_size = 4
+        ),
+        kl.Flatten(),
+        kl.Dense(
+            units = 1000
+        ),
+        kl.Activation('relu'),
+        kl.Dropout(
+            rate = 0.3
+        ),
+        kl.Dense(
+            units = 1000
+        ),
+        kl.Activation('relu'),
+        kl.Dropout(
+            rate = 0.3
+        ),
+        kl.Dense(
+            units = 1
+        ),
+        kl.Activation('sigmoid')
+    ], name = "Basset")
+
+    return Basset
+
+
+def build_CharPlant(window_size: int = 300) -> keras.Model:
+    CharPlant = keras.Sequential([
+        kl.Convolution1D(
+            filters = 200,
+            kernel_size = 19,
+            padding = 'same',
+            input_shape = (window_size, 4)
+        ),
+        kl.Activation('relu'),
+        kl.Dropout(
+            rate = 0.6
+        ),
+        kl.Convolution1D(
+            filters = 100,
+            kernel_size = 11,
+            padding = 'same'
+        ),
+        kl.Activation('relu'),
+        kl.Dropout(
+            rate = 0.6
+        ),
+        kl.Flatten(),
+        kl.Dense(
+            units = 200,
+            kernel_initializer = 'normal',
+            activation = 'relu'
+        ),
+        kl.Dropout(
+            rate = 0.6
+        ),
+        kl.Dense(
+            units = 1,
+            kernel_initializer = 'normal',
+            activation = 'linear'
+        ),
+        kl.Activation('sigmoid')
+    ], name = "CharPlant")
+
+    return CharPlant
+
+
+def build_DeeperDeepSEA(window_size: int = 600, n_targets: int = 1) -> keras.Model:
+    DeeperDeepSEA = keras.Sequential([
+        kl.Conv1D(
+            filters = 320,
+            kernel_size = 8,
+            input_shape = (window_size, 4)
+        ),
+        kl.Activation('relu'),
+        kl.Conv1D(
+            filters = 320,
+            kernel_size = 8
+        ),
+        kl.Activation('relu'),
+        kl.MaxPool1D(
+            pool_size = 4,
+            strides = 4
+        ),
+        kl.BatchNormalization(),
+        kl.Conv1D(
+            filters = 480,
+            kernel_size = 8
+        ),
+        kl.Activation('relu'),
+        kl.Conv1D(
+            filters = 480,
+            kernel_size = 8
+        ),
+        kl.Activation('relu'),
+        kl.MaxPool1D(
+            pool_size = 4,
+            strides = 4
+        ),
+        kl.BatchNormalization(),
+        kl.Dropout(rate = 0.2),
+        kl.Conv1D(
+            filters = 960,
+            kernel_size = 8
+        ),
+        kl.Activation('relu'),
+        kl.Conv1D(
+            filters = 960,
+            kernel_size = 8
+        ),
+        kl.Activation('relu'),
+        kl.BatchNormalization(),
+        kl.Dropout(rate = 0.2),
+        kl.Flatten(),
+        kl.Dense(n_targets),
+        kl.Activation('relu'),
+        kl.BatchNormalization(),
+        kl.Dense(n_targets, activation = 'sigmoid')
+    ], name = "DeeperDeepSEA")
+
+    return DeeperDeepSEA
+
+
 def build_model(model_name: str, **kwargs) -> keras.Model:
     if model_name == 'DanQ':
         window_size = kwargs.get('window_size', 300)
         kernel = kwargs.get('kernel', None)
         conv_activation = kwargs.get('conv_activation', 'relu') 
         return build_DanQ(window_size = window_size, kernel = kernel, conv_activation = conv_activation)
+    elif model_name == 'Basset':
+        window_size = kwargs.get('window_size', 300)
+        return build_Basset(window_size = window_size)
+    elif model_name == 'CharPlant':
+        window_size = kwargs.get('window_size', 300)
+        return build_CharPlant(window_size = window_size)
+    elif model_name == 'DeeperDeepSEA':
+        # cannot be built with window size 300
+        window_size = kwargs.get('window_size', 600)
+        return build_DeeperDeepSEA(window_size = window_size)
     else:
         raise ValueError("Unknown model '{}'".format(model_name))
