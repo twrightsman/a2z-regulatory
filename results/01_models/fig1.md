@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.13.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -102,7 +102,9 @@ results_acc = pd.DataFrame(results_acc)
 def shorten_species(scientific_name: str) -> str:
     genus, species = scientific_name.split(" ")
     return f"{genus[0]}. {species}"
+```
 
+```{code-cell} ipython3
 def plot_results_bar(results: pd.DataFrame, ax: matplotlib.axes.Axes, label_y = True, label_all = False):
     results_agg = results.groupby(['species', 'model'])['auPR'].aggregate([np.mean, scipy.stats.sem]).reindex(clades, level = 'species')
 
@@ -461,22 +463,25 @@ fig.savefig("figs/fdr_vs_for.png", dpi = 300, facecolor = "white")
 
 ```{code-cell} ipython3
 def plot_pr(ax: matplotlib.axes.Axes, test_intervals: pd.DataFrame):
+    ax.set_prop_cycle('color',[plt.cm.tab20(i) for i in range(len(plt.cm.tab20.colors))])
     for species, data in test_intervals.groupby('species'):
         y = data['target']
         y_hat = data['prediction']
 
         baseline = y.mean()
         precision, recall, _ = sklearn.metrics.precision_recall_curve(y, y_hat)
-        ax.plot(recall, precision, label = shorten_species(species))
+        aupr = sklearn.metrics.average_precision_score(y, y_hat)
+        ax.plot(recall, precision, label = f"{''.join((w[0] for w in species.split(' ')))} ({aupr:.2f})")
     ax.set_xlim(0, 1)
     ax.set_xlabel('Recall')
     ax.set_ylim(0, 1)
     ax.set_ylabel('Precision')
-    ax.legend()
+    ax.legend(ncol = 2)
 ```
 
 ```{code-cell} ipython3
 def plot_roc(ax: matplotlib.axes.Axes, test_intervals: pd.DataFrame):
+    ax.set_prop_cycle('color',[plt.cm.tab20(i) for i in range(len(plt.cm.tab20.colors))])
     for species, data in test_intervals.groupby('species'):
         y = data['target']
         y_hat = data['prediction']

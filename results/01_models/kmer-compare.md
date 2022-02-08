@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.13.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -185,8 +185,6 @@ def plot_bok_vs_a2z(configuration: str, ax: matplotlib.axes.Axes):
     LR_hold_TFIDF_pred = TFIDF_LR.predict(X_TFIDF_test) # y_pred
     LR_hold_TFIDF_prob = TFIDF_LR.predict_proba(X_TFIDF_test)[:,1] # y_score
 
-    sklearn.metrics.average_precision_score(Y_holdout, LR_hold_TFIDF_prob)
-
     test_species = "Zea mays"
     model_path = f"tmp/results/{configuration}/{test_species.replace(' ', '_')}/0/model"
     model = tf.keras.models.load_model(model_path)
@@ -196,9 +194,11 @@ def plot_bok_vs_a2z(configuration: str, ax: matplotlib.axes.Axes):
     intervals['a2z_prediction'] = model.predict(data).flatten()
 
     bok_precision, bok_recall, bok_thresholds = sklearn.metrics.precision_recall_curve(Y_holdout, LR_hold_TFIDF_prob)
+    bok_auPR = sklearn.metrics.average_precision_score(Y_holdout, LR_hold_TFIDF_prob)
     a2z_precision, a2z_recall, a2z_thresholds = sklearn.metrics.precision_recall_curve(intervals.loc[intervals['is_test'] == 1, 'target'], intervals.loc[intervals['is_test'] == 1, 'a2z_prediction'])
-    ax.plot(bok_recall, bok_precision, label = "bag-of-kmers")
-    ax.plot(a2z_recall, a2z_precision, label = "a2z")
+    a2z_auPR = sklearn.metrics.average_precision_score(intervals.loc[intervals['is_test'] == 1, 'target'], intervals.loc[intervals['is_test'] == 1, 'a2z_prediction'])
+    ax.plot(bok_recall, bok_precision, label = f"bag-of-kmers (auPR = {bok_auPR:.2f})")
+    ax.plot(a2z_recall, a2z_precision, label = f"a2z (auPR = {a2z_auPR:.2f})")
     ax.set_xlim((0, 1))
     ax.set_ylim((0, 1))
     ax.set_xlabel("Recall")

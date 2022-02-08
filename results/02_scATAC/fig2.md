@@ -162,16 +162,19 @@ for sp in range(1, peak_specificity.max() + 1):
 fig2c_precision = {}
 fig2c_recall = {}
 fig2c_thresholds = {}
+fig2c_auPR = {}
 
 for cell_type in ['guard_cell.9.87', 'trichoblast.3.35']:
     y = scATAC_binarized_all[cell_type]
     y_hat = test_data['prediction']
     label = capwords(cell_type.split('.')[0].replace('_', ' '))
     fig2c_precision[label], fig2c_recall[label], fig2c_thresholds[label] = sklearn.metrics.precision_recall_curve(y, y_hat)
+    fig2c_auPR[label] = sklearn.metrics.average_precision_score(y, y_hat)
 
 y = (peak_specificity > 0).astype(int)
 y_hat = test_data['prediction']
 fig2c_precision['Union'], fig2c_recall['Union'], fig2c_thresholds['Union'] = sklearn.metrics.precision_recall_curve(y, y_hat)
+fig2c_auPR['Union'] = sklearn.metrics.average_precision_score(y, y_hat)
 ```
 
 ```{code-cell} ipython3
@@ -201,7 +204,7 @@ ax2a.set_ylabel('Area under the threshold-recall curve')
 
 # Fig 2B
 for label in fig2c_recall:
-    ax2b.plot(fig2c_recall[label], fig2c_precision[label], label = label)
+    ax2b.plot(fig2c_recall[label], fig2c_precision[label], label = f"{label} ({fig2c_auPR[label]:.2f})")
 ax2b.set_xlim(0, 1)
 ax2b.set_xlabel('Recall')
 ax2b.set_ylim(0, 1)
