@@ -63,21 +63,38 @@ model_metrics_agg_sorted = model_metrics_agg.sort_index(level = 'model', key = l
 ```
 
 ```{code-cell} ipython3
-fig, ax = plt.subplots(constrained_layout = True, facecolor = 'white')
+fig, (ax1, ax2) = plt.subplots(nrows = 1, ncols = 2, figsize = (12, 5), constrained_layout = True, facecolor = 'white')
 
 for i, test_species in enumerate(sorted(model_metrics['test_species'].unique())):
     auPRs = model_metrics_agg_sorted.xs(key = test_species, level = 'test_species')['auPR']
     x = [model_plot_order.index(i) for i in auPRs.index]
     label = ''.join((w[0] for w in test_species.split("_")))
-    ax.plot(x, auPRs, label = label, color = plt.cm.tab20(i), zorder = 1)
-    ax.scatter(x, auPRs, color = plt.cm.tab20(i), zorder = 2)
+    ax1.plot(x, auPRs, label = label, color = plt.cm.tab20(i), zorder = 1)
+    ax1.scatter(x, auPRs, color = plt.cm.tab20(i), zorder = 2)
 
-ax.set_ylim((0, 0.7))
-ax.set_xticks(range(len(model_plot_order)))
-ax.set_xticklabels(model_plot_order)
-ax.set_xlabel('Model')
-ax.set_ylabel('auPR')
-ax.legend(ncol = 3, loc = 'upper left')
+ax1.set_ylim((0, 0.7))
+ax1.set_xticks(range(len(model_plot_order)))
+ax1.set_xticklabels(model_plot_order)
+ax1.set_xlabel('Model')
+ax1.set_ylabel('auPR')
+ax1.legend(ncol = 3, loc = 'upper left')
+
+
+for i, (test_species, data) in enumerate(model_metrics_agg_sorted.groupby('test_species')):
+    auPR_DanQdiff = data.loc[data.index.get_level_values('model') != 'DanQ', 'auPR'] - data.loc[(test_species, 'DanQ'), 'auPR']
+    x = [model_plot_order.index(i) for i in auPR_DanQdiff.index.get_level_values('model')]
+    label = ''.join((w[0] for w in test_species.split("_")))
+    ax2.plot(x, auPR_DanQdiff, label = label, color = plt.cm.tab20(i), zorder = 1)
+    ax2.scatter(x, auPR_DanQdiff, color = plt.cm.tab20(i), zorder = 2)
+
+ax2.axhline(y = 0., color = 'darkgray', linestyle = '--')
+
+ax2.set_ylim((-0.2, 0.1))
+ax2.set_xticks(range(len(model_plot_order) - 1))
+ax2.set_xticklabels(filter(lambda m: m != 'DanQ', model_plot_order))
+ax2.set_xlabel('Model')
+ax2.set_ylabel('auPR difference from DanQ')
+ax2.legend(ncol = 3, loc = 'upper left')
 
 fig.savefig('figs/model_cmp.png', dpi = 300)
 ```
