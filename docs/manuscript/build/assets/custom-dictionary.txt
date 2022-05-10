@@ -128,3 +128,12 @@ Kipoi
 CharPlant
 Marand
 DeeperDeepSEA
+Eutrema
+salsugineum
+Vitis
+vinifera
+Populus
+trichocarpa
+Glycine
+dicot
+SRA
