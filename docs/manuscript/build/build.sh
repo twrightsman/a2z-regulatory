@@ -25,9 +25,6 @@ for content_file in content/[0-9]*.md; do
   echo "${content_file}: $(pandoc --lua-filter build/pandoc/filters/wordcount.lua ${content_file})"
 done
 
-# Make output directory
-mkdir -p output
-
 # Generate reference information
 echo >&2 "Retrieving and processing reference metadata"
 manubot process \
@@ -40,6 +37,10 @@ manubot process \
 
 # Print out word/character/paragraph counts for whole manuscript
 echo "output/manuscript.md: $(pandoc --lua-filter build/pandoc/filters/wordcount.lua output/manuscript.md)"
+
+# if images is a directory, remove it
+if [ -d output/images ]; then rm -rf output/images; fi
+cp --recursive --dereference content/images output/
 
 # Create HTML output
 # https://pandoc.org/MANUAL.html
