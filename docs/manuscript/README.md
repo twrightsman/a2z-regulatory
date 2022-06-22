@@ -8,7 +8,7 @@ Based on the [Manubot Rootstock](https://github.com/manubot/rootstock).
 ```
 $ conda env create -f build/environment.yml
 $ conda activate manubot
-(manubot) $ wget --directory-prefix=build/pandoc/filters https://github.com/pandoc/lua-filters/raw/13c3fa7e97206413609a48a82575cb43137e037f/spellcheck/spellcheck.lua
+(manubot) $ wget --directory-prefix=build/pandoc/filters https://raw.githubusercontent.com/pandoc/lua-filters/9d59a92979086dc82a49a0a9c4dadb6008cb9f34/spellcheck/spellcheck.lua
 ```
 
 
