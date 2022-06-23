@@ -87,7 +87,11 @@
   "title": "Picard toolkit",
   "container-title": "GitHub",
   "URL": "https://github.com/broadinstitute/picard",
-  "publisher": "Broad Institute",
+  "author": [
+    {
+      "literal": "Broad Institute"
+    }
+  ],
   "issued": {
     "date-parts": [
       [
@@ -95,5 +99,131 @@
       ]
     ]
   }
+},
+{
+  "id": "keras",
+  "type": "webpage",
+  "title": "Keras",
+  "container-title": "GitHub",
+  "URL": "https://github.com/keras-team/keras",
+  "author": [
+    {
+      "given": "François",
+      "family": "Chollet"
+    }
+  ],
+  "issued": {
+    "date-parts": [
+      [
+        2015
+      ]
+    ]
+  }
+},
+{
+  "publisher": "Springer Science and Business Media LLC",
+  "issue": "7282",
+  "DOI": "10.1038/nature08747",
+  "type": "article-journal",
+  "page": "763-768",
+  "source": "Crossref",
+  "title": "Genome sequencing and analysis of the model grass Brachypodium distachyon",
+  "volume": "463",
+  "author": [
+    {
+      "literal": "The International Brachypodium Initiative"
+    }
+  ],
+  "container-title": "Nature",
+  "language": "en",
+  "issued": {
+    "date-parts": [
+      [
+        2010,
+        2
+      ]
+    ]
+  },
+  "URL": "https://doi.org/d6n7pw",
+  "container-title-short": "Nature",
+  "PMID": "20148030",
+  "id": "genome-brachy"
+},
+{
+  "publisher": "Springer Science and Business Media LLC",
+  "issue": "7161",
+  "DOI": "10.1038/nature06148",
+  "type": "article-journal",
+  "page": "463-467",
+  "source": "Crossref",
+  "title": "The grapevine genome sequence suggests ancestral hexaploidization in major angiosperm phyla",
+  "volume": "449",
+  "author": [
+    {
+      "literal": "The French–Italian Public Consortium for Grapevine Genome Characterization"
+    }
+  ],
+  "container-title": "Nature",
+  "language": "en",
+  "issued": {
+    "date-parts": [
+      [
+        2007,
+        8,
+        26
+      ]
+    ]
+  },
+  "URL": "https://doi.org/ckfnh2",
+  "container-title-short": "Nature",
+  "PMID": "17721507",
+  "id": "genome-grape"
+},
+{
+  "type": "article-journal",
+  "id": "zenodo",
+  "categories": [
+    "machine learning",
+    "gene regulation",
+    "plants"
+  ],
+  "language": "en",
+  "author": [
+    {
+      "family": "Wrightsman",
+      "given": "Travis"
+    },
+    {
+      "family": "Marand",
+      "given": "Alexandre P."
+    },
+    {
+      "family": "Crisp",
+      "given": "Peter A."
+    },
+    {
+      "family": "Springer",
+      "given": "Nathan M."
+    },
+    {
+      "family": "Buckler",
+      "given": "Edward S."
+    }
+  ],
+  "issued": {
+    "date-parts": [
+      [
+        2021,
+        11,
+        11
+      ]
+    ]
+  },
+  "container-title": "Zenodo",
+  "DOI": "10.5281/zenodo.6699866",
+  "publisher": "Zenodo",
+  "title": "Modeling chromatin state from sequence across angiosperms using recurrent convolutional neural networks",
+  "URL": "https://doi.org/10.5281/zenodo.6699866",
+  "version": "1.2.0"
 }
 ]
