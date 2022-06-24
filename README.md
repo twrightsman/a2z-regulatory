@@ -60,15 +60,9 @@ You can also mask out repeats with bedtools and an annotation.
 
 ### Running predictions using Kipoi
 
-a2z has been packaged for the [Kipoi](https://kipoi.org) model zoo but is not yet integrated into it.
-You will have to clone my fork of the Kipoi model repository until it is [merged](https://github.com/kipoi/models/pull/343).
+The a2z leaf chromatin and DNA methylation models are also available in the [Kipoi](https://kipoi.org) model zoo.
 
-```
-$ rm -rf ~/.kipoi/models
-$ git clone -b a2z https://github.com/twrightsman/models ~/.kipoi/models
-```
-
-The following will making predictions on 600bp sliding windows with a stride of 50bp.
+The following will make leaf chromatin accessibility predictions on 600bp sliding windows with a stride of 50bp.
 You can adjust the window stride by modifying the `-s` parameter to `bedtools`.
 
 ```
