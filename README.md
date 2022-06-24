@@ -61,11 +61,11 @@ You can also mask out repeats with bedtools and an annotation.
 ### Running predictions using Kipoi
 
 a2z has been packaged for the [Kipoi](https://kipoi.org) model zoo but is not yet integrated into it.
-You will have to clone my fork of the Kipoi model repository until it is merged.
+You will have to clone my fork of the Kipoi model repository until it is [merged](https://github.com/kipoi/models/pull/343).
 
 ```
 $ rm -rf ~/.kipoi/models
-$ git clone https://github.com/twrightsman/models ~/.kipoi/models
+$ git clone -b a2z https://github.com/twrightsman/models ~/.kipoi/models
 ```
 
 The following will making predictions on 600bp sliding windows with a stride of 50bp.
