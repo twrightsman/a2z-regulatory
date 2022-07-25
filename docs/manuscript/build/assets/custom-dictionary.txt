@@ -45,14 +45,12 @@ genomic
 preprocessed
 preprocessing
 auPR
-kmers
 genic
 transposons
 trichoblast
 methylated
 MoDISco
 medoid
-kmer
 medoids
 dicots
 monocots
@@ -137,3 +135,7 @@ trichocarpa
 Glycine
 dicot
 SRA
+bisulfite
+sawtooth
+transposase
+foxtail
