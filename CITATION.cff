@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the article describing it."
+authors:
+- family-names: "Wrightsman"
+  given-names: "Travis"
+  orcid: "https://orcid.org/0000-0002-0904-6473"
+title: "a2z-regulatory"
+version: 1.3.0
+doi: 10.5281/zenodo.6970423
+date-released: 2021-11-15
+url: "https://github.com/twrightsman/a2z-regulatory"
+preferred-citation:
+  authors:
+    - family-names: "Wrightsman"
+      given-names: "Travis"
+      orcid: "https://orcid.org/0000-0002-0904-6473"
+    - family-names: "Marand"
+      given-names: "Alexandre P."
+      orcid: "https://orcid.org/0000-0001-9100-8320"
+    - family-names: "Crisp"
+      given-names: "Peter A."
+      orcid: "https://orcid.org/0000-0002-3655-0130"
+    - family-names: "Springer"
+      given-names: "Nathan M."
+      orcid: "https://orcid.org/0000-0002-7301-4759"
+    - family-names: "Buckler"
+      given-names: "Edward S."
+      orcid: "https://orcid.org/0000-0002-3100-371X"
+  title: "Modeling chromatin state from sequence across angiosperms using recurrent convolutional neural networks"
+  type: article
+  journal: "The Plant Genome"
+  month: 08
+  year: 2022
+  issue: e20249
+  doi: 10.1002/tpg2.20249
+  date-released: 2022-08-03
+  url: "https://doi.org/10.1002/tpg2.20249"
