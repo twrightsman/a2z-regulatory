@@ -29,9 +29,11 @@ preferred-citation:
   title: "Modeling chromatin state from sequence across angiosperms using recurrent convolutional neural networks"
   type: article
   journal: "The Plant Genome"
-  month: 08
+  month: 09
   year: 2022
-  issue: e20249
-  doi: 10.1002/tpg2.20249
+  volume: "15"
+  issue: "3"
+  page: "e20249"
+  doi: "10.1002/tpg2.20249"
   date-released: 2022-08-03
   url: "https://doi.org/10.1002/tpg2.20249"

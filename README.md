@@ -4,7 +4,7 @@
 
 If you use the a2z model in your work, please cite the following article:
 
-Wrightsman, T., Marand, A. P., Crisp, P. A., Springer, N. M., & Buckler, E. S. (2022). Modeling chromatin state from sequence across angiosperms using recurrent convolutional neural networks. _The Plant Genome_, 00, e20249. https://doi.org/10.1002/tpg2.20249
+Wrightsman, T., Marand, A. P., Crisp, P. A., Springer, N. M., & Buckler, E. S. (2022). Modeling chromatin state from sequence across angiosperms using recurrent convolutional neural networks. _The Plant Genome_, 15, e20249. https://doi.org/10.1002/tpg2.20249
 
 ## Dependencies
 
