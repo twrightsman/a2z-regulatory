@@ -1,4 +1,5 @@
 # Python
+src/python/a2z/build/
 *.egg-info/
 __pycache__/
 *.py[cod]
