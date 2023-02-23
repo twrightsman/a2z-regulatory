@@ -1,7 +1,7 @@
 name: a2z
 channels:
-  - bioconda
   - conda-forge
+  - bioconda
 dependencies:
   - python =3.9
   - cudatoolkit =11.2
@@ -25,10 +25,10 @@ dependencies:
   - samtools =1.13
   - numpy >=1.19
   - nbdime =3
-  - meme =5.3
+  - meme =5.4
   - libxml2
+  - tensorflow =2.6
   - pip
   - pip:
-    - tensorflow==2.6.*
     - modisco==0.5.15.*
     - simple_gpu_scheduler ==0.1.*
