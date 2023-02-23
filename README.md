@@ -17,7 +17,7 @@ If using mambaforge, use the `mamba create` command instead of `conda create`.
 ## Environment Setup
 
 ```
-git clone https://bitbucket.org/bucklerlab/a2z-regulatory
+git clone https://github.com/twrightsman/a2z-regulatory
 cd a2z-regulatory
 conda env create -f envs/a2z.yml
 conda activate a2z
