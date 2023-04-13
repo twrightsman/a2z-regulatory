@@ -45,7 +45,7 @@ Use `predict_genome.py -h` to see all available options.
 ```
 (base)$ curl 'https://zenodo.org/record/5724562/files/model-accessibility-full.h5?download=1' > model-accessibility-full.h5
 (base)$ conda activate a2z
-(a2z)$ src/python/scripts/predict_genome.py model-accessibility-full.h5 genome.fa > preds.bed
+(a2z)$ src/python/scripts/predict_genome.py --stride 50 model-accessibility-full.h5 genome.fa > preds.bed
 ```
 
 Now you will have a BED3+1 file with predictions in 600bp windows sliding 50bp at a time.
@@ -53,10 +53,13 @@ You can do simple "peak-calling" with `bedtools`.
 
 ```
 (a2z)$ samtools faidx genome.fa
-(a2z)$ bedtools map -a <(bedtools makewindows -g genome.fa.fai -w 50) -b preds.bed -c 4 -o max | awk '$4 >= 0.9' | bedtools merge > preds.gte90.merged.bed
+(a2z)$ bedtools slop -g genome.fa.fai -b -150 < preds.bed > preds.trimmed.bed
+(a2z)$ bedtools map -a <(bedtools makewindows -g genome.fa.fai -w 50) -b preds.trimmed.bed -c 4 -o max | awk '$4 >= 0.9' | bedtools merge > preds.gte90.merged.bed
 ```
 
-The above will take the max prediction of all overlapping windows every 50bp and then merge touching 50bp chunks with predictions greater than or equal to 0.90 into whole regions.
+The above will trim 150bp off each end of the predictions and take the max prediction of all overlapping windows every 50bp and then merge touching 50bp chunks with predictions greater than or equal to 0.90 into whole regions.
+Trimming is optional but recommended because the size of true accessible regions called from the ATAC-seq data is close to 300bp.
+
 You can also mask out repeats with bedtools and an annotation.
 
 ```
